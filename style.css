@@ -37,6 +37,7 @@ body {
 
   /*background: color image short-hand, atalho*/
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
 }
 
 /* '*' É o seletor universal, aplica por todo o body */
@@ -46,7 +47,8 @@ body * {
 }
  
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   /*Essa altura e´só ficticia*/
   /* height: 712px; */
   /* border: 1px solid red; */
@@ -106,12 +108,18 @@ display block pega toda a largura disponível e caso tivesse outro elemento fica
   left: 0;
   z-index: 1;
   transform: translateY(-50%);
+
+  animation: slide-back 0.2s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.2s forwards;
 }
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
 /*O span tem display inline por padrão*/
 #switch span {
   display: block;
@@ -186,4 +194,34 @@ footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+}
+
+/* media queries */
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg)
+  }
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg)
+  }
+}
+
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
