@@ -225,3 +225,10 @@ footer {
     left: 0;
   }
 }
+
+/* Essa configuração melhora a experiência do usuário, 
+garantindo que a troca entre o tema escuro e claro seja mais fluida */
+:root, .light {
+  will-change: background, background-image, color;
+  transition: background 0.3s ease, background-image 0.3 ease, color 0.3s ease;
+}
